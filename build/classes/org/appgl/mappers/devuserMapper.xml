@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.appgl.dao.devuserDao">
+	<select id="getAll" resultType="devuser">
+		select * from dev_user
+	</select>
+	
+	<select id="getBydevname" parameterType="String" resultType="devuser">
+	 select * from dev_user where devcode = #{devname} 
+	 </select>
+	 
+	 <insert id="add" parameterType="devuser"  useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+	 	insert into dev_user(`devcode`,`devname`,`devpassword`,`devemail`,`devinfo`) values(#{devcode},#{devname},#{devpassword},#{devemail},#{devinfo})
+	 </insert>
+	 
+	 <select id="getById" parameterType="int" resultType="devuser">
+		select * from dev_user where devid = #{devid}
+	</select>
+</mapper>
